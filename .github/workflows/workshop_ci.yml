@@ -38,10 +38,10 @@ jobs:
          az ml job create -s -f src/workshop/core/pipelines/training_pipeline.yml
 
       - name:  Create Pull Request to Main
-        uses: thomaseizinger/create-pull-request@master
+        uses: peter-evans/create-pull-request@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }} 
-          head: ${{ github.ref }}
-          base: main
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }} 
           title: "An automatically created PR to main by successful CI"
-
+          labels: |
+            report
+            automated pr
